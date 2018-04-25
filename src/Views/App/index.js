@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react'
 
+import Calculator               from 'Views/Calculator'
+import History                  from 'Views/History'
+
 import './styles.css'
 
 class Index extends PureComponent {
@@ -22,7 +25,12 @@ class Index extends PureComponent {
 
   render() {
 
-    return <div className="app">App</div>
+    return (
+      <div className="app">
+        <Calculator />
+        <History />
+      </div>
+    )
   }
 }
 

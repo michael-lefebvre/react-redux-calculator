@@ -1,0 +1,27 @@
+@import "Scss/variables.scss";
+
+//== App container
+//
+//##
+
+.app {
+  background: rgba( white, .7 );
+  border-radius: 6px;
+  box-shadow: $boxshadow-default;
+  min-height: $screen-xs - 100px;
+  height: 80%;
+  max-height: $screen-sm;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: $screen-xs;
+}
+
+
+@media (max-width: $screen-xs) {
+  .app {
+    border-radius: 0;
+    width: 100%;
+  }
+}
+

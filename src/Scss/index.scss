@@ -28,8 +28,11 @@ body {
 
 #root {
   -webkit-overflow-scrolling: touch;
-  min-width: $screen-xs;
+  align-items: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
+  min-width: $screen-xs;
   overflow: hidden;
   user-select: none;
 }
