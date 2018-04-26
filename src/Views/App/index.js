@@ -1,4 +1,8 @@
 import React, { PureComponent } from 'react'
+import { connect }              from 'react-redux'
+import classNames               from 'classnames'
+
+import { isHistoryOpen }        from 'Store/Ui/Selectors'
 
 import Calculator               from 'Views/Calculator'
 import History                  from 'Views/History'
@@ -26,7 +30,7 @@ class Index extends PureComponent {
   render() {
 
     return (
-      <div className="app">
+      <div className={classNames('app', { 'ui-history': this.props.isHistoryOpen })}>
         <Calculator />
         <History />
       </div>
@@ -34,4 +38,8 @@ class Index extends PureComponent {
   }
 }
 
-export default Index
+const mapStateToProps = ( state, ownProps ) => ({
+  isHistoryOpen: isHistoryOpen( state )
+})
+
+export default connect( mapStateToProps, null )( Index )

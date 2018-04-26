@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react'
+import { bindActionCreators }   from 'redux'
+import { connect }              from 'react-redux'
 import classNames               from 'classnames'
+
+import { isHistoryOpen }        from 'Store/Ui/Selectors'
+import Actions                  from 'Store/Actions'
 
 import Button                   from './Button'
 
 import './styles.css'
+
+const { Ui: { openHistory } } = Actions
 
 class Index extends PureComponent {
 
@@ -18,6 +25,11 @@ class Index extends PureComponent {
   // Life cycle
   // --------------------------------------------------
 
+  componentDidMount()
+  {
+    console.log(this.props)
+  }
+
   //
   // Helpers
   // --------------------------------------------------
@@ -28,7 +40,10 @@ class Index extends PureComponent {
 
   handleHistoryTrigger()
   {
-    document.body.classList.toggle('ui-history')
+    if( this.props.isHistoryOpen )
+      return
+
+    this.props.openHistory()
   }
 
   //
@@ -36,13 +51,14 @@ class Index extends PureComponent {
   // --------------------------------------------------
 
   render() {
+    const { isHistoryOpen } = this.props
 
     return (
       <div className="app__calculator app__calculator--close-">
         <div className="app__calculator__content">
           <div className="app__calculator__screen">
             <div className="app__calculator__screen__header">
-              <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={classNames('app__calculator__history', { 'app__calculator__history--active': false })} />
+              <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={classNames('app__calculator__history', { 'app__calculator__history--active': isHistoryOpen })} />
               <div className="app__calculator__operation">1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01</div>
             </div>
             <div className="app__calculator__input">12341234123412341234123412341234123412341234,11</div>
@@ -74,4 +90,11 @@ class Index extends PureComponent {
   }
 }
 
-export default Index
+const mapStateToProps = ( state, ownProps ) => ({
+  isHistoryOpen: isHistoryOpen( state )
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators( { openHistory }, dispatch )
+
+export default connect( mapStateToProps, mapDispatchToProps )( Index )

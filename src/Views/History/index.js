@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react'
+import { bindActionCreators }   from 'redux'
+import { connect }              from 'react-redux'
 import onClickOutside           from 'react-onclickoutside'
+
+import { isHistoryOpen }        from 'Store/Ui/Selectors'
+import Actions                  from 'Store/Actions'
 
 import Search                   from './Search'
 
 import './styles.css'
+
+const { Ui: { closeHistory } } = Actions
 
 class Index extends PureComponent {
 
@@ -22,8 +29,10 @@ class Index extends PureComponent {
 
   handleClickOutside( e )
   {
-    if( document.body.classList.contains('ui-history') )
-      document.body.classList.toggle('ui-history')
+    if( !this.props.isHistoryOpen )
+      return
+
+    this.props.closeHistory()
   }
 
   //
@@ -92,4 +101,11 @@ class Index extends PureComponent {
   }
 }
 
-export default onClickOutside( Index )
+const mapStateToProps = ( state, ownProps ) => ({
+  isHistoryOpen: isHistoryOpen( state )
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators( { closeHistory }, dispatch )
+
+export default connect( mapStateToProps, mapDispatchToProps )( onClickOutside( Index ) )
