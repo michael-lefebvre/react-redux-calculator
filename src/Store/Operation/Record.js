@@ -73,6 +73,11 @@ export default class OperationRecord extends Operation {
   {
     var value = this.input === '' ? this.placeholder : this.input
 
+    // dumbly copy/paste from
+    // http://www.saintsatplay.com/blog/2014/08/handling-floating-point-numbers-in-javascript#.WuGgV1OFPxg
+    if( !Number.isInteger( +value ) )
+      value = ''+Math.round( parseFloat( ( +value * Math.pow( 10, 4 ) ).toFixed( 4 ) ) ) / Math.pow( 10, 4 )
+
     return this._formatInput( value )
   }
 
