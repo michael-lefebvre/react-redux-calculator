@@ -1,7 +1,7 @@
 
 import {
-    HISTORY_CLOSE
-  , HISTORY_OPEN
+    UI_HISTORY_CLOSE
+  , UI_HISTORY_OPEN
 } from './index'
 
 
@@ -9,9 +9,9 @@ import {
   //
 
 export const openHistory = () => ({
-    type: HISTORY_OPEN
+    type: UI_HISTORY_OPEN
 })
 
 export const closeHistory = () => ({
-    type: HISTORY_CLOSE
+    type: UI_HISTORY_CLOSE
 })

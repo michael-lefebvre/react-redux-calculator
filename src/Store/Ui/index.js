@@ -4,8 +4,8 @@ import Reducers   from './Reducers'
 // Action types
 // --------------------------------------------------
 
-const HISTORY_OPEN  = 'HISTORY_OPEN'
-const HISTORY_CLOSE = 'HISTORY_CLOSE'
+const UI_HISTORY_OPEN  = 'UI_HISTORY_OPEN'
+const UI_HISTORY_CLOSE = 'UI_HISTORY_CLOSE'
 
 //
 // Expose methods
@@ -13,6 +13,6 @@ const HISTORY_CLOSE = 'HISTORY_CLOSE'
 
 export {
     Reducers
-  , HISTORY_OPEN
-  , HISTORY_CLOSE
+  , UI_HISTORY_OPEN
+  , UI_HISTORY_CLOSE
 }

@@ -1,8 +1,8 @@
 import { fromJS } from 'immutable'
 
 import {
-    HISTORY_CLOSE
-  , HISTORY_OPEN
+    UI_HISTORY_CLOSE
+  , UI_HISTORY_OPEN
 } from './index'
 
 
@@ -14,10 +14,10 @@ export default function update( state = initialState, action )
 {
   switch ( action.type )
   {
-    case HISTORY_OPEN:
+    case UI_HISTORY_OPEN:
       return state.set( 'history', true )
 
-    case HISTORY_CLOSE:
+    case UI_HISTORY_CLOSE:
       return state.set( 'history', false )
 
     default:
