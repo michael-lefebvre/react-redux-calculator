@@ -4,15 +4,20 @@ import classNames from 'classnames'
 
 import './styles.css'
 
-const Button = ({ value, label, symbol, operator, integer, onClick }) =>
+const Button = ({ value, label, symbol, operator, integer, large, onClick }) =>
 {
   var className = classNames('app__calculator__button', {
     'app__calculator__button--symbol':   symbol,
     'app__calculator__button--operator': operator,
-    'app__calculator__button--integer':  integer
+    'app__calculator__button--integer':  integer,
+    'app__calculator__button--large':    large
   })
 
-  return <button className={className} type="button" value={value} onClick={onClick}>{label || value}</button>
+  return (
+    <button className={className} type="button" value={value} onClick={onClick}>
+      <span dangerouslySetInnerHTML={{ __html: label || value }} />
+    </button>
+  )
 }
 
 Button.propTypes = {
@@ -22,6 +27,7 @@ Button.propTypes = {
   , symbol:    PropTypes.bool
   , operator:  PropTypes.bool
   , integer:   PropTypes.bool
+  , large:     PropTypes.bool
 }
 
 Button.defaultProps = {
@@ -29,6 +35,7 @@ Button.defaultProps = {
   , symbol:    false
   , operator:  false
   , integer:   false
+  , large:     false
 }
 
 export default Button

@@ -10,6 +10,8 @@ export const OPERATORS = ['+','-','/','*']
 // --------------------------------------------------
 
 export const VALUE_TOGGLE = 'VALUE_TOGGLE'
+export const VALUE_UNDO   = 'VALUE_UNDO'
+export const VALUE_CLEAR  = 'VALUE_CLEAR'
 export const VALUE_EQUAL  = '='
 export const VALUE_DOT    = '.'
 
