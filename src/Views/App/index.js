@@ -18,8 +18,7 @@ import {
   VALUE_EQUAL,
   VALUE_DOT,
   VALUE_CLEAR,
-  OPERATORS,
-  OPERATION_OPERATOR }          from 'Constants'
+  OPERATORS }                   from 'Constants'
 
 import Provider                 from 'Views/Calculator/Provider'
 import Calculator               from 'Views/Calculator'
@@ -90,9 +89,6 @@ class Index extends PureComponent {
   handleOnSep() {
 
     if( !this._isActive() )
-      return
-
-    if( this.props.Operation._lastOperationType() === OPERATION_OPERATOR )
       return
 
     this.props.Operation.setInput( VALUE_DOT )
