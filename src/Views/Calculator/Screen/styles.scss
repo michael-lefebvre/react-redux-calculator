@@ -1,0 +1,55 @@
+@import "Scss/variables.scss";
+
+//== Calculator Input screen
+//
+//##
+
+.app__calculator__screen {
+  flex: 0 auto;
+  padding: 18px;
+  text-align: right;
+}
+
+.app__calculator__screen__header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 20px;
+  justify-content: space-between;
+}
+
+.app__calculator__history {
+  background: url(./ico_history.svg) no-repeat center;
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  flex: 0 20px;
+  margin-right: 10px;
+  opacity: .6;
+  outline: none;
+  width: 20px;
+
+  &--active,
+  &:hover { opacity: 1 }
+}
+
+.app__calculator__operation,
+.app__calculator__input {
+  direction: rtl;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app__calculator__operation {
+  color: rgba( #fff, .6);
+  flex: 1;
+  font-size: $font-size-base;
+}
+
+.app__calculator__input {
+  color: rgba( #fff, .9);
+  font-size: 40px;
+  line-height: 40px;
+  padding-top: 10px;
+}
