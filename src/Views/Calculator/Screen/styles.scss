@@ -50,10 +50,18 @@
 
 .app__calculator__input {
   color: rgba( #fff, .9);
-  // direction: rtl;
+  direction: rtl;
   font-size: 40px;
   line-height: 40px;
   padding-top: 10px;
+
+  &--negative:after {
+    content: '-'
+  }
+
+  &--dot:before {
+    content: ','
+  }
 }
 
 @media (max-height: $screen-xs) {

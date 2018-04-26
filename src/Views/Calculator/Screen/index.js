@@ -25,10 +25,6 @@ class Index extends PureComponent {
   // Life cycle
   // --------------------------------------------------
 
-  // componentDidMount()
-  // {
-  // }
-
   //
   // Helpers
   // --------------------------------------------------
@@ -37,8 +33,8 @@ class Index extends PureComponent {
   // Handlers
   // --------------------------------------------------
 
-  handleHistoryTrigger()
-  {
+  handleHistoryTrigger() {
+
     if( this.props.isHistoryOpen )
       return
 
@@ -53,7 +49,21 @@ class Index extends PureComponent {
 
     const { isHistoryOpen, Operation } = this.props
 
-    const buttonClassnames  = classNames('app__calculator__history', { 'app__calculator__history--active': isHistoryOpen })
+    var inputValue   = Operation.displayInput()
+      , isValueNeg   = inputValue[0] === '-'
+      , isPendingDot = inputValue.slice( -1 ) === ','
+
+    if( isValueNeg )
+      inputValue = inputValue.substring( 1 )
+
+    if( isPendingDot )
+      inputValue = inputValue.slice(0,-1)
+
+    const buttonClassnames = classNames('app__calculator__history', { 'app__calculator__history--active': isHistoryOpen })
+        , inputClassnames  = classNames('app__calculator__input', {
+            'app__calculator__input--negative': isValueNeg,
+            'app__calculator__input--dot':      isPendingDot
+          })
 
     return (
         <div className="app__calculator__screen">
@@ -61,7 +71,7 @@ class Index extends PureComponent {
             <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={buttonClassnames} />
             <div className="app__calculator__operation">{Operation.displayOperation()}</div>
           </div>
-          <div className="app__calculator__input">{Operation.displayInput()}</div>
+          <div className={inputClassnames}>{inputValue}</div>
         </div>
     )
   }
