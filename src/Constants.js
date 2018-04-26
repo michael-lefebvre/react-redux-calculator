@@ -9,7 +9,7 @@ export const OPERATORS = ['+','-','/','*']
 // Buttons values
 // --------------------------------------------------
 
-export const VALUE_TOGGLE = 'VALUE_TOGGLE'
+export const VALUE_TOGGLE = 't'
 export const VALUE_UNDO   = 'VALUE_UNDO'
 export const VALUE_CLEAR  = 'c'
 export const VALUE_EQUAL  = '='

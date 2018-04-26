@@ -138,15 +138,19 @@ export default class OperationRecord extends Operation {
     if( this._lastOperationType() === OPERATION_OPERATOR )
       return false
 
-    var prevInput     = this.input
-      , operation     = this.operation.toJSON()
-      , operationSize = operation.length
-      , operationRow  = operationSize < 2 ? 0 : ( operationSize - 1 )
+    var prevInput = this.input
 
     if( prevInput === '' )
       prevInput = '0'
 
     var input = prevInput.substring( 0, 1 ) === '-' ? prevInput.substring( 1 ) : '-' + prevInput
+
+    if( this.isResult )
+      return Store.dispatch( pushOperation({ input, operation: new List( [ +input ] ) }) )
+
+    var operation     = this.operation.toJSON()
+      , operationSize = operation.length
+      , operationRow  = operationSize < 2 ? 0 : ( operationSize - 1 )
 
     operation[ operationRow ] = +input
 
