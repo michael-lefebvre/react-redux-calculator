@@ -19,7 +19,7 @@ import {
   VALUE_DOT,
   VALUE_CLEAR,
   VALUE_TOGGLE,
-  OPERATORS }                   from 'Constants'
+  OPERATORS_KEYS }              from 'Constants'
 
 import Provider                 from 'Views/Calculator/Provider'
 import Calculator               from 'Views/Calculator'
@@ -34,7 +34,7 @@ const keyMap = {
   , keySearch:   ['f']
   , keyDigit:    ['0','1','2','3','4','5','6','7','8','9']
   , keyDot:      ['.',',']
-  , keyOperator: OPERATORS
+  , keyOperator: OPERATORS_KEYS
   , keyEqual:    [ VALUE_EQUAL ]
   , keyToggle:   [ VALUE_TOGGLE ]
 }

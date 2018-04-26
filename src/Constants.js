@@ -3,7 +3,19 @@
 // Operators list
 // --------------------------------------------------
 
-export const OPERATORS = ['+','-','/','*']
+export const OPERATORS_KEYS_ADD        = '+'
+export const OPERATORS_KEYS_SUBTRACT   = '-'
+export const OPERATORS_KEYS_DEVIDE     = '/'
+export const OPERATORS_KEYS_MULTIPLY   = '*'
+
+export const OPERATORS_KEYS            = [ OPERATORS_KEYS_ADD, OPERATORS_KEYS_SUBTRACT, OPERATORS_KEYS_DEVIDE, OPERATORS_KEYS_MULTIPLY ]
+
+export const OPERATORS_LABELS_ADD      = '&#43;'
+export const OPERATORS_LABELS_SUBTRACT = '&minus;'
+export const OPERATORS_LABELS_DEVIDE   = '&divide;'
+export const OPERATORS_LABELS_MULTIPLY = '&times;'
+
+export const OPERATORS_LABELS            = [ OPERATORS_LABELS_ADD, OPERATORS_LABELS_SUBTRACT, OPERATORS_LABELS_DEVIDE, OPERATORS_LABELS_MULTIPLY ]
 
 //
 // Buttons values

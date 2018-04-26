@@ -258,7 +258,7 @@ class Index extends PureComponent {
                      className={classNames('app__history__item', { focused: focused === i })}
                      onClick={this.handleOnClick}
                      onMouseOver={this.handleMouseFocus}>
-                      <div className="app__history__item__operation">{o.operation}</div>
+                      <div className="app__history__item__operation" dangerouslySetInnerHTML={{ __html: o.operation }} />
                       <div className="app__history__item__result">{o.input}</div>
                     </li>
                   )}

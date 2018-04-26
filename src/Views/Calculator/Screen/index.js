@@ -69,7 +69,7 @@ class Index extends PureComponent {
         <div className="app__calculator__screen">
           <div className="app__calculator__screen__header">
             <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={buttonClassnames} />
-            <div className="app__calculator__operation">{Operation.displayOperation()}</div>
+            <div className="app__calculator__operation" dangerouslySetInnerHTML={{ __html: Operation.displayOperation() }} />
           </div>
           <div className={inputClassnames}>{inputValue}</div>
         </div>

@@ -7,6 +7,8 @@ import {
 
 import {
   VALUE_DOT,
+  OPERATORS_KEYS,
+  OPERATORS_LABELS,
   OPERATION_INPUT,
   OPERATION_OPERATOR }        from 'Constants'
 
@@ -74,7 +76,7 @@ export default class OperationRecord extends Operation {
 
     // dumbly copy/paste from
     // http://www.saintsatplay.com/blog/2014/08/handling-floating-point-numbers-in-javascript#.WuGgV1OFPxg
-    if( !Number.isInteger( +value ) )
+    if( this.isResult && !Number.isInteger( +value ) )
       value = ''+Math.round( parseFloat( ( +value * Math.pow( 10, 4 ) ).toFixed( 4 ) ) ) / Math.pow( 10, 4 )
 
     return this._formatInput( value )
@@ -82,7 +84,15 @@ export default class OperationRecord extends Operation {
 
   displayOperation()
   {
-    const operation = this.operation.toJSON()
+    const operation = this.operation.toJSON().map( o => {
+
+      var keyIndex = OPERATORS_KEYS.indexOf( o )
+
+      if( keyIndex !== -1 )
+        return OPERATORS_LABELS[ keyIndex ]
+
+      return o
+    })
 
     return this._formatInput( operation.join(' ') )
   }
