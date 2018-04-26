@@ -3,7 +3,8 @@ import { Record, List }       from 'immutable'
 import Store                  from 'Store'
 import {
   pushOperation,
-  computeOperation }          from './Actions'
+  computeOperation,
+  warningOperation }          from './Actions'
 
 import {
   VALUE_DOT,
@@ -17,6 +18,7 @@ const Operation = new Record({
   input:       '',
   placeholder: '0',
   isResult:    false,
+  warning:     false,
   operation:   new List([]),
   // operation:   new List([
   //     12344.456
@@ -173,7 +175,7 @@ export default class OperationRecord extends Operation {
       , operationSize = operation.length
 
     if( !operationSize )
-      return
+      return false
 
     if( isNaN( operation[ operationSize - 1 ] ) )
       return false
@@ -195,8 +197,10 @@ export default class OperationRecord extends Operation {
         , size      = operation.length
         , isOdd     = size % 2
 
-    if( size < 3 || !isOdd )
+    if( size < 3 || !isOdd ) {
+      Store.dispatch( warningOperation() )
       return false
+    }
 
     // @TODO: find an alternative to `eval`
     // var _result = operation[0]

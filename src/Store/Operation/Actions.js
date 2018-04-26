@@ -4,6 +4,7 @@ import {
   , OPERATION_PUSH
   , OPERATION_COMPUTE
   , OPERATION_LOAD
+  , OPERATION_WARNING
 } from './index'
 
 import { pushToHistory } from '../History/Actions'
@@ -19,6 +20,10 @@ export const clearOperation = () => ({
 export const pushOperation = props => ({
     type: OPERATION_PUSH
   , props
+})
+
+export const warningOperation = () => ({
+    type: OPERATION_WARNING
 })
 
 export const loadOperation = props =>

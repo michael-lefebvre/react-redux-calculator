@@ -6,6 +6,7 @@ import classNames               from 'classnames'
 import { isHistoryOpen }        from 'Store/Ui/Selectors'
 import Actions                  from 'Store/Actions'
 
+import Warning                  from '../Warning'
 import { withOperation }        from '../Provider'
 
 import './styles.css'
@@ -67,6 +68,7 @@ class Index extends PureComponent {
 
     return (
         <div className="app__calculator__screen">
+          <Warning />
           <div className="app__calculator__screen__header">
             <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={buttonClassnames} />
             <div className="app__calculator__operation" dangerouslySetInnerHTML={{ __html: Operation.displayOperation() }} />
