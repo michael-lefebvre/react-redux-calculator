@@ -76,7 +76,7 @@ export default class OperationRecord extends Operation {
 
     // dumbly copy/paste from
     // http://www.saintsatplay.com/blog/2014/08/handling-floating-point-numbers-in-javascript#.WuGgV1OFPxg
-    if( this.isResult && !Number.isInteger( +value ) )
+    if( !Number.isInteger( +value ) )
       value = ''+Math.round( parseFloat( ( +value * Math.pow( 10, 4 ) ).toFixed( 4 ) ) ) / Math.pow( 10, 4 )
 
     return this._formatInput( value )
