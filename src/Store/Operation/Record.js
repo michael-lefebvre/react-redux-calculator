@@ -7,7 +7,6 @@ import {
 
 import {
   VALUE_DOT,
-  VALUE_TOGGLE,
   OPERATION_INPUT,
   OPERATION_OPERATOR }        from 'Constants'
 
@@ -121,15 +120,7 @@ export default class OperationRecord extends Operation {
     if( prevInput === '-0' && value !== VALUE_DOT )
       prevInput = '-'
 
-    if( value === VALUE_TOGGLE )
-    {
-      if( prevInput === '' )
-        prevInput = '0'
-
-      input = prevInput.substring( 0, 1 ) === '-' ? prevInput.substring( 1 ) : '-' + prevInput
-    }
-    else
-      input = prevInput + value
+    input = prevInput + value
 
     var operationSize = operation.length
       , operationRow  = operationSize < 2 ? 0 : ( operationSize - 1 )
@@ -138,6 +129,26 @@ export default class OperationRecord extends Operation {
       operation.push( +input )
     else
       operation[ operationRow ] = +input
+
+    return Store.dispatch( pushOperation({ input, operation: new List( operation ) }) )
+  }
+
+  setToggle()
+  {
+    if( this._lastOperationType() === OPERATION_OPERATOR )
+      return false
+
+    var prevInput     = this.input
+      , operation     = this.operation.toJSON()
+      , operationSize = operation.length
+      , operationRow  = operationSize < 2 ? 0 : ( operationSize - 1 )
+
+    if( prevInput === '' )
+      prevInput = '0'
+
+    var input = prevInput.substring( 0, 1 ) === '-' ? prevInput.substring( 1 ) : '-' + prevInput
+
+    operation[ operationRow ] = +input
 
     return Store.dispatch( pushOperation({ input, operation: new List( operation ) }) )
   }

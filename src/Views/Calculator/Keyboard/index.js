@@ -2,9 +2,7 @@ import React                  from 'react'
 import { bindActionCreators } from 'redux'
 import { connect }            from 'react-redux'
 
-import {
-  clearOperation,
-  pushOperation }          from 'Store/Operation/Actions'
+import { clearOperation  }    from 'Store/Operation/Actions'
 
 import Button                 from '../Button'
 import { withOperation }      from '../Provider'
@@ -15,13 +13,12 @@ import {
   VALUE_CLEAR,
   VALUE_DOT,
   VALUE_EQUAL,
-  OPERATORS,
-  OPERATION_OPERATOR
+  OPERATORS
 } from 'Constants'
 
 import './styles.css'
 
-const Index = ({ Operation, clearOperation, pushOperation }) => {
+const Index = ({ Operation, clearOperation }) => {
 
   const handleOnClick = ({ currentTarget: { value }}) => {
 
@@ -32,20 +29,14 @@ const Index = ({ Operation, clearOperation, pushOperation }) => {
       return Operation.setOperator( value )
   }
 
-  const handleOnEqual = () => {
-
+  const handleOnEqual = () =>
     Operation.setResult()
-  }
 
   const handleOnToggle = () =>
-  {
-    if( Operation._lastOperationType() === OPERATION_OPERATOR )
-      return
+    Operation.setToggle()
 
-    var props = Operation.setInput( VALUE_TOGGLE )
-
-    pushOperation( props )
-  }
+  const handleOnSep = () =>
+    Operation.setInput( VALUE_DOT )
 
   const keyboardMap = [
     { value: VALUE_UNDO, label: '&#10508;', symbol: true },
@@ -65,7 +56,7 @@ const Index = ({ Operation, clearOperation, pushOperation }) => {
     { value: '9', integer: true },
     { value: '+', label: '&#43;', operator: true },
     { value: '0', integer: true, large: true },
-    { value: VALUE_DOT, label: '&#806;', symbol: true },
+    { value: VALUE_DOT, label: '&#806;', symbol: true, onClick: handleOnSep },
     { value: VALUE_EQUAL, label: '&#61;', operator: true, onClick: handleOnEqual }
   ]
 
@@ -80,6 +71,6 @@ const Index = ({ Operation, clearOperation, pushOperation }) => {
 
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators( { clearOperation, pushOperation }, dispatch )
+  bindActionCreators( { clearOperation }, dispatch )
 
 export default connect( null, mapDispatchToProps )( withOperation( Index ) )
