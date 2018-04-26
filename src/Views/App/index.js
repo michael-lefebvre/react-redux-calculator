@@ -28,13 +28,13 @@ import './styles.css'
 
 
 const keyMap = {
-    keyEsc:    ['esc']
-  , keyClear:  [ VALUE_CLEAR ]
-  , keySearch: ['f']
-  , keyInt:    ['0','1','2','3','4','5','6','7','8','9']
-  , keySep:    ['.',',']
-  , keyOp:     OPERATORS
-  , keyEq:     [ VALUE_EQUAL ]
+    keyEsc:      ['esc']
+  , keyClear:    [ VALUE_CLEAR ]
+  , keySearch:   ['f']
+  , keyDigit:    ['0','1','2','3','4','5','6','7','8','9']
+  , keyDot:      ['.',',']
+  , keyOperator: OPERATORS
+  , keyEqual:    [ VALUE_EQUAL ]
 }
 
 class Index extends PureComponent {
@@ -43,13 +43,13 @@ class Index extends PureComponent {
 
     super( props )
 
-    this.handleOnInt    = this.handleOnInt.bind( this )
-    this.handleOnSep    = this.handleOnSep.bind( this )
-    this.handleOnEsc    = this.handleOnEsc.bind( this )
-    this.handleOnSearch = this.handleOnSearch.bind( this )
-    this.handleOnClear  = this.handleOnClear.bind( this )
-    this.handleOnOp     = this.handleOnOp.bind( this )
-    this.handleOnEq     = this.handleOnEq.bind( this )
+    this.handleOnEsc      = this.handleOnEsc.bind( this )
+    this.handleOnSearch   = this.handleOnSearch.bind( this )
+    this.handleOnClear    = this.handleOnClear.bind( this )
+    this.handleOnDot      = this.handleOnDot.bind( this )
+    this.handleOnDigit    = this.handleOnDigit.bind( this )
+    this.handleOnOperator = this.handleOnOperator.bind( this )
+    this.handleOnEqual    = this.handleOnEqual.bind( this )
   }
 
   //
@@ -78,7 +78,7 @@ class Index extends PureComponent {
   // Handlers
   // --------------------------------------------------
 
-  handleOnInt({ key }) {
+  handleOnDigit({ key }) {
 
     if( !this._isActive() )
       return
@@ -86,7 +86,7 @@ class Index extends PureComponent {
     this.props.Operation.setInput( key )
   }
 
-  handleOnSep() {
+  handleOnDot() {
 
     if( !this._isActive() )
       return
@@ -94,7 +94,7 @@ class Index extends PureComponent {
     this.props.Operation.setInput( VALUE_DOT )
   }
 
-  handleOnOp({ key }) {
+  handleOnOperator({ key }) {
 
     if( !this._isActive() )
       return
@@ -102,7 +102,7 @@ class Index extends PureComponent {
     this.props.Operation.setOperator( key )
   }
 
-  handleOnEq( e ) {
+  handleOnEqual( e ) {
 
     if( !this._isActive() )
       return
@@ -146,13 +146,13 @@ class Index extends PureComponent {
   render() {
 
     const handlers = {
-      keyEsc:    this.handleOnEsc,
-      keySearch: this.handleOnSearch,
-      keyClear:  this.handleOnClear,
-      keyInt:    this.handleOnInt,
-      keySep:    this.handleOnSep,
-      keyOp:     this.handleOnOp,
-      keyEq:     this.handleOnEq
+      keyEsc:      this.handleOnEsc,
+      keySearch:   this.handleOnSearch,
+      keyClear:    this.handleOnClear,
+      keyDigit:    this.handleOnDigit,
+      keyDot:      this.handleOnDot,
+      keyOperator: this.handleOnOperator,
+      keyEqual:    this.handleOnEqual
     }
 
     return (

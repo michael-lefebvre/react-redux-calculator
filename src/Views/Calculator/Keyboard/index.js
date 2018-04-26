@@ -35,7 +35,7 @@ const Index = ({ Operation, clearOperation }) => {
   const handleOnToggle = () =>
     Operation.setToggle()
 
-  const handleOnSep = () =>
+  const handleOnDot = () =>
     Operation.setInput( VALUE_DOT )
 
   const keyboardMap = [
@@ -43,20 +43,20 @@ const Index = ({ Operation, clearOperation }) => {
     { value: VALUE_CLEAR, label: 'C', onClick: clearOperation },
     { value: VALUE_TOGGLE, label: '&plusmn;', symbol: true, onClick: handleOnToggle },
     { value: '/', label: '&divide;', operator: true },
-    { value: '1', integer: true },
-    { value: '2', integer: true },
-    { value: '3', integer: true },
+    { value: '1', digit: true },
+    { value: '2', digit: true },
+    { value: '3', digit: true },
     { value: '*', label: '&times;', operator: true },
-    { value: '4', integer: true },
-    { value: '5', integer: true },
-    { value: '6', integer: true },
+    { value: '4', digit: true },
+    { value: '5', digit: true },
+    { value: '6', digit: true },
     { value: '-', label: '&minus;', operator: true },
-    { value: '7', integer: true },
-    { value: '8', integer: true },
-    { value: '9', integer: true },
+    { value: '7', digit: true },
+    { value: '8', digit: true },
+    { value: '9', digit: true },
     { value: '+', label: '&#43;', operator: true },
-    { value: '0', integer: true, large: true },
-    { value: VALUE_DOT, label: '&#806;', symbol: true, onClick: handleOnSep },
+    { value: '0', digit: true, large: true },
+    { value: VALUE_DOT, label: '&#806;', symbol: true, onClick: handleOnDot },
     { value: VALUE_EQUAL, label: '&#61;', operator: true, onClick: handleOnEqual }
   ]
 

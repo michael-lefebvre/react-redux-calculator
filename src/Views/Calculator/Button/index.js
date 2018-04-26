@@ -4,12 +4,12 @@ import classNames from 'classnames'
 
 import './styles.css'
 
-const Button = ({ value, label, symbol, operator, integer, large, onClick }) =>
+const Button = ({ value, label, symbol, operator, digit, large, onClick }) =>
 {
   var className = classNames('app__calculator__button', {
     'app__calculator__button--symbol':   symbol,
     'app__calculator__button--operator': operator,
-    'app__calculator__button--integer':  integer,
+    'app__calculator__button--digit':    digit,
     'app__calculator__button--large':    large
   })
 
@@ -26,7 +26,7 @@ Button.propTypes = {
   , label:     PropTypes.oneOfType([ PropTypes.string, PropTypes.bool ])
   , symbol:    PropTypes.bool
   , operator:  PropTypes.bool
-  , integer:   PropTypes.bool
+  , digit:     PropTypes.bool
   , large:     PropTypes.bool
 }
 
@@ -34,7 +34,7 @@ Button.defaultProps = {
     label:     false
   , symbol:    false
   , operator:  false
-  , integer:   false
+  , digit:     false
   , large:     false
 }
 
