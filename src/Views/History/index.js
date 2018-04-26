@@ -219,7 +219,7 @@ class Index extends PureComponent {
     var results = [ ...this.state.list ]
 
     if( query.trim() !== '' )
-      results = results.filter( r => r.input.indexOf( query ) !== -1 )
+      results = results.filter( r => r.input.indexOf( query ) === 0 )
 
     this.setState({
         focused: -1
@@ -236,11 +236,12 @@ class Index extends PureComponent {
 
     const { focused, list, results } = this.state
         , isListEmpty                = !list
+        , hasNoMatch                 = results && !results.length
 
     return (
       <div className="app__history">
         <div className="app__history__content">
-          { isListEmpty && <div className="app__history__empty"><div><span role="img" aria-label="emoji">😬</span> No previous operations</div></div>}
+          { isListEmpty && <div className="app__history__empty"><div><span role="img" aria-label="emoji">🤓</span> No previous operations</div></div>}
           { !isListEmpty && (
             <Fragment>
               <Search
@@ -249,6 +250,7 @@ class Index extends PureComponent {
                onQuery={this.handleOnQuery}
                onKeyNav={this.handleKeyNav} />
               <div className="app__history__list">
+                { hasNoMatch && <div className="app__history__empty"><div><span role="img" aria-label="emoji">🤔</span> No operations match your search</div></div>}
                 <ul ref="list" onMouseOut={this.handleMouseOut}>
                   {results.map( ( o, i ) =>
                     <li

@@ -61,6 +61,8 @@ $open-ease:       $ease;
 .app__history__list {
   flex: 1;
   overflow-y: auto;
+
+  .app__history__empty { margin-top: 100px }
 }
 
 .app__history__item {
