@@ -39,6 +39,24 @@ $open-ease:       $ease;
   transition: opacity $opacity-speed $opacity-ease $opacity-delay, transform $open-speed $open-ease;
 }
 
+.app__history__empty {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  div {
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  span {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
 
 .app__history__list {
   flex: 1;
@@ -46,7 +64,9 @@ $open-ease:       $ease;
 }
 
 .app__history__item {
+  border-radius: 2px;
   color: #2A494E;
+  cursor: pointer;
   margin-left: 15px;
   margin-right: 15px;
   padding: 10px 5px;
@@ -62,7 +82,7 @@ $open-ease:       $ease;
     right: 5px;
   }
 
-  &:hover {
+  &.focused {
     background: rgba( #1DB2AD, .2);
     color: rgba( #2A494E, .7);
 

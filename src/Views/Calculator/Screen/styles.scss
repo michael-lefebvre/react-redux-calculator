@@ -35,7 +35,6 @@
 
 .app__calculator__operation,
 .app__calculator__input {
-  direction: rtl;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -49,6 +48,7 @@
 
 .app__calculator__input {
   color: rgba( #fff, .9);
+  // direction: rtl;
   font-size: 40px;
   line-height: 40px;
   padding-top: 10px;

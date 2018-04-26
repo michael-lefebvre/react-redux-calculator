@@ -6,6 +6,8 @@ import classNames               from 'classnames'
 import { isHistoryOpen }        from 'Store/Ui/Selectors'
 import Actions                  from 'Store/Actions'
 
+import { withOperation }        from '../Provider'
+
 import './styles.css'
 
 const { Ui: { openHistory } } = Actions
@@ -23,10 +25,9 @@ class Index extends PureComponent {
   // Life cycle
   // --------------------------------------------------
 
-  componentDidMount()
-  {
-    console.log(this.props)
-  }
+  // componentDidMount()
+  // {
+  // }
 
   //
   // Helpers
@@ -50,15 +51,17 @@ class Index extends PureComponent {
 
   render() {
 
-    const buttonClassnames  = classNames('app__calculator__history', { 'app__calculator__history--active': this.props.isHistoryOpen })
+    const { isHistoryOpen, Operation } = this.props
+
+    const buttonClassnames  = classNames('app__calculator__history', { 'app__calculator__history--active': isHistoryOpen })
 
     return (
         <div className="app__calculator__screen">
           <div className="app__calculator__screen__header">
             <input type="button" alt="Show History" onClick={this.handleHistoryTrigger} className={buttonClassnames} />
-            <div className="app__calculator__operation">1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01 + 1230,1 + 4,01</div>
+            <div className="app__calculator__operation">{Operation.displayOperation()}</div>
           </div>
-          <div className="app__calculator__input">12341234123412341234123412341234123412341234,11</div>
+          <div className="app__calculator__input">{Operation.displayInput()}</div>
         </div>
     )
   }
@@ -71,4 +74,4 @@ const mapStateToProps = ( state, ownProps ) => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators( { openHistory }, dispatch )
 
-export default connect( mapStateToProps, mapDispatchToProps )( Index )
+export default connect( mapStateToProps, mapDispatchToProps )( withOperation( Index ) )
