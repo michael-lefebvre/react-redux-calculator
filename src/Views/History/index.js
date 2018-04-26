@@ -72,7 +72,7 @@ class Index extends PureComponent {
   componentDidUpdate( prevProps ) {
 
     if( prevProps.isHistoryOpen && !this.props.isHistoryOpen )
-      this.setState({ query: '', focused: -1, results: [ ...this.state.list ] })
+      this.setState({ query: '', focused: -1, results: this.state.list ? [ ...this.state.list ] : null })
   }
 
   //
