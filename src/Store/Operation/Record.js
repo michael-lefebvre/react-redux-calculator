@@ -179,7 +179,7 @@ export default class OperationRecord extends Operation {
     try
     {
        // eslint-disable-next-line
-      var result = eval( operation.join('') )
+      var result = eval( operation.join(' ') )
     }
     catch( err )
     {
