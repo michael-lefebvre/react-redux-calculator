@@ -15,7 +15,8 @@
 .app__container {
   background: rgba( white, .7 );
   border-radius: 6px;
-  box-shadow: $boxshadow-default;
+  // box-shadow: $boxshadow-default;
+  box-shadow: 0 0 0 1px rgba(168, 172, 183, 0.37), 0 0 1px 0 rgba(0, 0, 0, .6), 0 6px 10px 0 rgba(0, 0, 0, .2);
   min-height: $screen-xs - 100px;
   height: 80%;
   max-height: $screen-sm;
@@ -23,11 +24,11 @@
   overflow: hidden;
   position: relative;
   width: $screen-xs;
+  // transition: all 250ms linear;
 }
 
-
 @media (max-width: $screen-xs) {
-  .app {
+  .app__container {
     border-radius: 0;
     width: 100%;
   }

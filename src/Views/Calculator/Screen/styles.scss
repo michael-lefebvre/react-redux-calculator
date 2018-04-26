@@ -5,9 +5,11 @@
 //##
 
 .app__calculator__screen {
+  background: rgba( white, 0);
   flex: 0 auto;
   padding: 18px;
   text-align: right;
+  transition: background 250ms linear;
 }
 
 .app__calculator__screen__header {
@@ -52,4 +54,10 @@
   font-size: 40px;
   line-height: 40px;
   padding-top: 10px;
+}
+
+@media (max-height: $screen-xs) {
+  .app__calculator__screen {
+    background: rgba( #1DB2AD, .3)
+  }
 }
