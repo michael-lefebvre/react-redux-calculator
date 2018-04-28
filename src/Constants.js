@@ -21,11 +21,12 @@ export const OPERATORS_LABELS            = [ OPERATORS_LABELS_ADD, OPERATORS_LAB
 // Buttons values
 // --------------------------------------------------
 
-export const VALUE_TOGGLE = 't'
-export const VALUE_UNDO   = 'backspace'
-export const VALUE_CLEAR  = 'c'
-export const VALUE_EQUAL  = '='
-export const VALUE_DOT    = '.'
+export const VALUE_TOGGLE  = 't'
+export const VALUE_PERCENT = '%'
+export const VALUE_UNDO    = 'backspace'
+export const VALUE_CLEAR   = 'c'
+export const VALUE_EQUAL   = '='
+export const VALUE_DOT     = '.'
 
 //
 // Operation's rows types

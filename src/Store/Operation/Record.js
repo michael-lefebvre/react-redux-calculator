@@ -232,6 +232,26 @@ export default class OperationRecord extends Operation {
     return Store.dispatch( computeOperation({ operation: new List( operation ), input: ''+result }) )
   }
 
+  setPercent()
+  {
+    if( this._lastOperationType() === OPERATION_OPERATOR )
+      return false
+
+    var prevInput = this.input
+
+    if( prevInput === '' || prevInput === '0' )
+      return
+
+    var input = +prevInput / 100
+
+    var operationRow = this.operation.size - 1
+      , operation    = this.operation.set( operationRow, input )
+
+    input = ''+input
+
+    return Store.dispatch( pushOperation({ operation, input }))
+  }
+
   undo()
   {
     if( this.isResult )

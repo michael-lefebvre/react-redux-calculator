@@ -20,6 +20,7 @@ import {
   VALUE_CLEAR,
   VALUE_TOGGLE,
   VALUE_UNDO,
+  VALUE_PERCENT,
   OPERATORS_KEYS }              from 'Constants'
 
 import Provider                 from 'Views/Calculator/Provider'
@@ -40,6 +41,7 @@ const keyMap = {
   , keyEqual:    [ VALUE_EQUAL ]
   , keyToggle:   [ VALUE_TOGGLE ]
   , keyUndo:     [ VALUE_UNDO ]
+  , keyPercent:  [ VALUE_PERCENT ]
 }
 
 class Index extends PureComponent {
@@ -57,6 +59,7 @@ class Index extends PureComponent {
     this.handleOnEqual    = this.handleOnEqual.bind( this )
     this.handleOnToggle   = this.handleOnToggle.bind( this )
     this.handleOnUndo     = this.handleOnUndo.bind( this )
+    this.handleOnPercent  = this.handleOnPercent.bind( this )
   }
 
   //
@@ -125,6 +128,14 @@ class Index extends PureComponent {
     this.props.Operation.setToggle()
   }
 
+  handleOnPercent() {
+
+    if( !this._isActive() )
+      return
+
+    this.props.Operation.setPercent()
+  }
+
   handleOnEsc( e ) {
 
     e.preventDefault()
@@ -177,7 +188,8 @@ class Index extends PureComponent {
       keyOperator: this.handleOnOperator,
       keyEqual:    this.handleOnEqual,
       keyToggle:   this.handleOnToggle,
-      keyUndo:     this.handleOnUndo
+      keyUndo:     this.handleOnUndo,
+      keyPercent:  this.handleOnPercent
     }
 
     return (

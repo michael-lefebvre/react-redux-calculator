@@ -9,7 +9,7 @@ import { withOperation }      from '../Provider'
 
 import {
   VALUE_TOGGLE,
-  VALUE_UNDO,
+  VALUE_PERCENT,
   VALUE_CLEAR,
   VALUE_DOT,
   VALUE_EQUAL,
@@ -43,16 +43,16 @@ const Index = ({ Operation, clearOperation }) => {
   const handleOnToggle = () =>
     Operation.setToggle()
 
-  const handleOnUndo = () =>
-    Operation.undo()
+  const handleOnPercent = () =>
+    Operation.setPercent()
 
   const handleOnDot = () =>
     Operation.setInput( VALUE_DOT )
 
   const keyboardMap = [
-    { value: VALUE_UNDO, label: '&#10508;', symbol: true, onClick: handleOnUndo },
     { value: VALUE_CLEAR, label: 'C', onClick: clearOperation },
     { value: VALUE_TOGGLE, label: '&plusmn;', symbol: true, onClick: handleOnToggle },
+    { value: VALUE_PERCENT, label: '&percnt;', symbol: true, onClick: handleOnPercent },
     { value: OPERATORS_KEYS_DEVIDE, label: OPERATORS_LABELS_DEVIDE, operator: true },
     { value: '1', digit: true },
     { value: '2', digit: true },
