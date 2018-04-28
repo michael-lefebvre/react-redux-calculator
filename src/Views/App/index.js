@@ -24,6 +24,7 @@ import {
 import Provider                 from 'Views/Calculator/Provider'
 import Calculator               from 'Views/Calculator'
 import History                  from 'Views/History'
+import ErrorBoundary            from './ErrorBoundary'
 
 import './styles.css'
 
@@ -168,14 +169,16 @@ class Index extends PureComponent {
     }
 
     return (
-      <Provider Operation={this.props.Operation}>
-        <HotKeys className={classNames('app', { 'ui-history': this.props.isHistoryOpen })} keyMap={keyMap} handlers={handlers} ref="calculator">
-          <div className="app__container">
-            <Calculator />
-            <History />
-          </div>
-        </HotKeys>
-      </Provider>
+      <ErrorBoundary>
+        <Provider Operation={this.props.Operation}>
+          <HotKeys className={classNames('app', { 'ui-history': this.props.isHistoryOpen })} keyMap={keyMap} handlers={handlers} ref="calculator">
+            <div className="app__container">
+              <Calculator />
+              <History />
+            </div>
+          </HotKeys>
+        </Provider>
+      </ErrorBoundary>
     )
   }
 }

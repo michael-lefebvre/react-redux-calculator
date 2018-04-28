@@ -1,0 +1,52 @@
+@import "Scss/variables.scss";
+
+//== App Crash
+//
+//## display error message
+
+.app__error {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+}
+
+.app__error__content {
+  margin: auto;
+  padding: 20px;
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2 span {
+    display: block;
+    font-family: $font-family-emoji;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+.app__error__details {
+  background: rgba( black, .5);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 16px 6px;
+
+  pre {
+    color: #fff;
+    cursor: text;
+    font-family: $font-family-monospace;
+    font-size: 85%;
+    line-height: 1.45;
+    max-height: 200px;
+    overflow: auto;
+    padding: 0;
+    word-wrap: normal;
+  }
+}
+
+.app__error__btn {
+  cursor: pointer;
+}
