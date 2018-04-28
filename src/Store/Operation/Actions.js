@@ -33,7 +33,6 @@ export const loadOperation = props =>
       dispatch( closeHistory() )
     ])
 
-
 export const computeOperation = props =>
   ( dispatch, getState ) =>
     Promise.resolve( dispatch({

@@ -15,6 +15,8 @@ import {
   openHistory }                 from 'Store/Ui/Actions'
 
 import {
+  MONKEYS,
+  MONKEYS_SPEED,
   VALUE_EQUAL,
   VALUE_DOT,
   VALUE_CLEAR,
@@ -30,7 +32,6 @@ import ErrorBoundary            from './ErrorBoundary'
 
 import './styles.css'
 
-
 const keyMap = {
     keyEsc:      ['esc']
   , keyClear:    [ VALUE_CLEAR ]
@@ -42,6 +43,7 @@ const keyMap = {
   , keyToggle:   [ VALUE_TOGGLE ]
   , keyUndo:     [ VALUE_UNDO ]
   , keyPercent:  [ VALUE_PERCENT ]
+  , keyMonkeys:  ['space']
 }
 
 class Index extends PureComponent {
@@ -60,6 +62,7 @@ class Index extends PureComponent {
     this.handleOnToggle   = this.handleOnToggle.bind( this )
     this.handleOnUndo     = this.handleOnUndo.bind( this )
     this.handleOnPercent  = this.handleOnPercent.bind( this )
+    this.handleOnMonkeys  = this.handleOnMonkeys.bind( this )
   }
 
   //
@@ -173,6 +176,29 @@ class Index extends PureComponent {
     this.props.Operation.undo()
   }
 
+  handleOnMonkeys() {
+
+    this.props.clearOperation()
+
+    var i = 0
+      , l = MONKEYS.length
+
+    const monkeysLoop = () => {
+       setTimeout( () => {
+
+          var { method, value } = MONKEYS[ i ]
+
+          this.props.Operation[ method ]( value )
+
+          if( ++i < l )
+            monkeysLoop()
+
+       }, MONKEYS_SPEED )
+    }
+
+    monkeysLoop()
+  }
+
   //
   // Renders
   // --------------------------------------------------
@@ -189,7 +215,8 @@ class Index extends PureComponent {
       keyEqual:    this.handleOnEqual,
       keyToggle:   this.handleOnToggle,
       keyUndo:     this.handleOnUndo,
-      keyPercent:  this.handleOnPercent
+      keyPercent:  this.handleOnPercent,
+      keyMonkeys:  this.handleOnMonkeys
     }
 
     return (
