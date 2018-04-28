@@ -43,11 +43,14 @@ const Index = ({ Operation, clearOperation }) => {
   const handleOnToggle = () =>
     Operation.setToggle()
 
+  const handleOnUndo = () =>
+    Operation.undo()
+
   const handleOnDot = () =>
     Operation.setInput( VALUE_DOT )
 
   const keyboardMap = [
-    { value: VALUE_UNDO, label: '&#10508;', symbol: true },
+    { value: VALUE_UNDO, label: '&#10508;', symbol: true, onClick: handleOnUndo },
     { value: VALUE_CLEAR, label: 'C', onClick: clearOperation },
     { value: VALUE_TOGGLE, label: '&plusmn;', symbol: true, onClick: handleOnToggle },
     { value: OPERATORS_KEYS_DEVIDE, label: OPERATORS_LABELS_DEVIDE, operator: true },

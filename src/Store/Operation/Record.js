@@ -2,6 +2,7 @@ import { Record, List }       from 'immutable'
 
 import Store                  from 'Store'
 import {
+  clearOperation,
   pushOperation,
   computeOperation,
   warningOperation }          from './Actions'
@@ -66,6 +67,11 @@ export default class OperationRecord extends Operation {
       return OPERATION_INPUT
 
     return isNaN( operationValue ) ? OPERATION_OPERATOR : OPERATION_INPUT
+  }
+
+  _doesLastOperationIsAnInput()
+  {
+    return this._lastOperationType() === OPERATION_INPUT
   }
 
   //
@@ -224,5 +230,55 @@ export default class OperationRecord extends Operation {
 
     // return { operation: new List([ result ]), input: ''+result }
     return Store.dispatch( computeOperation({ operation: new List( operation ), input: ''+result }) )
+  }
+
+  undo()
+  {
+    if( this.isResult )
+      return Store.dispatch( clearOperation() )
+
+    var operation
+      , input
+
+    if( !this._doesLastOperationIsAnInput() )
+    {
+      operation = this.operation.slice(0,-1)
+      input     = ''+operation.get( operation.size - 1 )
+
+      return Store.dispatch( pushOperation({ operation, input }))
+    }
+
+    var operationRow = this.operation.size - 1
+
+    input = this.operation.get( operationRow )
+
+    if( !input )
+      return
+
+    input = input.toString()
+
+    if( !input.length )
+      return
+
+    input = input.slice( 0, -1 )
+
+    // Test if `input` is empty
+    // or doesn't contains positive digit (eg. -0.0)
+    if( !input.length || !/[1-9]+/.test( input.replace( /[-.]/g,'' ) ) )
+      // first input, we clear the whole operation
+      if( operationRow === 0 )
+        return Store.dispatch( clearOperation() )
+      // we remove last input
+      else
+      {
+        operation = this.operation.slice(0,-1)
+        input     = ''+operation.get( operation.size - 2 )
+
+        return Store.dispatch( pushOperation({ operation, input }))
+      }
+
+    operation = this.operation.set( operationRow, +input )
+
+    return Store.dispatch( pushOperation({ operation, input }))
   }
 }

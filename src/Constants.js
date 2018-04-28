@@ -22,7 +22,7 @@ export const OPERATORS_LABELS            = [ OPERATORS_LABELS_ADD, OPERATORS_LAB
 // --------------------------------------------------
 
 export const VALUE_TOGGLE = 't'
-export const VALUE_UNDO   = 'VALUE_UNDO'
+export const VALUE_UNDO   = 'backspace'
 export const VALUE_CLEAR  = 'c'
 export const VALUE_EQUAL  = '='
 export const VALUE_DOT    = '.'
