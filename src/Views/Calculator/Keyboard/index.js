@@ -4,8 +4,8 @@ import { connect }            from 'react-redux'
 
 import { clearOperation  }    from 'Store/Operation/Actions'
 
+import { withOperation }      from 'Views/App/Provider'
 import Button                 from '../Button'
-import { withOperation }      from '../Provider'
 
 import {
   VALUE_TOGGLE,

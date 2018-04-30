@@ -1,7 +1,7 @@
 import React             from 'react'
 import classNames        from 'classnames'
 
-import { withOperation } from '../Provider'
+import { withOperation } from 'Views/App/Provider'
 
 import './styles.css'
 

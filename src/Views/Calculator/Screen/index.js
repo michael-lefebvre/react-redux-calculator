@@ -6,8 +6,8 @@ import classNames               from 'classnames'
 import { isHistoryOpen }        from 'Store/Ui/Selectors'
 import Actions                  from 'Store/Actions'
 
+import { withOperation }        from 'Views/App/Provider'
 import Warning                  from '../Warning'
-import { withOperation }        from '../Provider'
 
 import './styles.css'
 

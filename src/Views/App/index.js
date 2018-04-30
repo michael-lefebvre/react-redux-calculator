@@ -25,10 +25,10 @@ import {
   VALUE_PERCENT,
   OPERATORS_KEYS }              from 'Constants'
 
-import Provider                 from 'Views/Calculator/Provider'
 import Calculator               from 'Views/Calculator'
 import History                  from 'Views/History'
 import ErrorBoundary            from './ErrorBoundary'
+import Provider                 from './Provider'
 
 import './styles.css'
 
