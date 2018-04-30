@@ -1,0 +1,45 @@
+@import "Scss/variables.scss";
+
+//== Calculator Warning
+//
+//##
+
+.app__calculator__warning {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.app__calculator__warning__content {
+  align-items: center;
+  background: rgba(#FB5B7A, .8);
+  border-radius: 6px;
+  color: rgba( white, .7);
+  display: flex;
+  font-size: $font-size-large;
+  height: $font-size-extra + 10px;
+  padding: 0 12px;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 550ms $ease, transform 550ms $ease;
+  // width: 100%;
+
+  &--active {
+    animation: displayWarningBadge 2s ease normal forwards;
+    // opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+@keyframes displayWarningBadge {
+  from { opacity: 0; transform: translateY(-100%) }
+  25%  { opacity: 1; transform: translateY(0) }
+  75%  { opacity: 1; transform: translateY(0) }
+  to   { opacity: 0; transform: translateY(-100%) }
+}

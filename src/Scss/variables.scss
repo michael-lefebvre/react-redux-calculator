@@ -1,0 +1,146 @@
+//
+// Variables
+// --------------------------------------------------
+
+//== Miscellaneous
+//
+//## stuffs
+
+
+  //== Fake transparent GIF
+  //
+
+$oldschool-spacer:  'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)';
+
+
+  //== Transitions
+  //
+
+$ease: cubic-bezier(0, 0.79, 0.38, 0.96);
+
+@mixin pane-transition( $duration: 800ms, $property: all ) {
+    transition: $property $duration $ease;
+}
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+  //== Font Size
+  //
+
+$font-size-extra-small:   11px;
+$font-size-small:         12px;
+$font-size-regular:       14px;
+$font-size-base:          $font-size-regular;
+$font-size-large:         16px;
+$font-size-extra:         20px;
+
+  //== Font Weight
+  //
+
+$font-weight-regular: 400;
+$font-weight-medium:  500;
+$font-weight-bold:    700;
+
+  //== Font Family
+  //
+
+$font-family-system:     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$font-family-emoji:      AppleColorEmoji, "Apple Color Emoji", "Segoe UI Emoji";
+$font-family-monospace:  Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+
+  //== Colors
+  //
+
+  //## Actions colors
+
+$color-opened:            #8fcd5c;
+$color-closed:            #fa5f4f;
+$color-saved:             #ffc000;
+$color-drafted:           #b982fe;
+$color-actioned:          #0077f6;
+$color-assigned:          #5ccdb6;
+
+
+  //## Dark side colors
+
+$color-storm-troopers:    #fff;
+$color-commander-cody:    #fafafa;
+$color-grand-moff-tarkin: #f6f6f6;
+$color-grievous:          #efefef;
+$color-dark-tyranus:      #dfdfdf;
+$color-dark-maul:         #97999a;
+$color-vader:             #4e5153;
+$color-dark-sidious:      #232627;
+
+  //## Actions Contrast colors
+
+$color-medium:            #d6e8fe;
+$color-light:             #e8f3fe;
+$color-extra-light:       #f4faff;
+
+
+  //## Colors to merge /!\
+
+$color-text:               #404040;
+$color-transition:         #9b9b9b;
+$color-placeholder:        #cbcbcb;
+$color-highlight:          #5ab2e2;
+$color-highlight-bkgd:     $color-highlight;
+$color-highlight-border:   $color-highlight;
+$color-lowlight:           #b8b8b8;
+$color-btn-label:          #666667;
+$color-btn-disabled-label: $color-lowlight;
+$color-btn-border:         #bbb9b9;
+$color-btn-bkgd:           $color-storm-troopers;
+$color-icon:               #71797f;
+$color-btn-border-active:  #8FC1FF;
+$color-btn-bkg-active:     #F4F9FF;
+$color-btn-top-bar-border: #D0D3D7;
+$color-icon-default:       #979797;
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+  //== Screen break points
+  //
+
+$screen-xs: 480px;
+$screen-sm: 600px;
+$screen-mp: 700px;
+$screen-ms: 840px;
+$screen-md: 960px;
+$screen-lg: 1080px;
+$screen-xl: 1280px;
+
+  //== Border Radius
+  //
+
+$border-radius-base:   4px;
+$border-radius-window: 3px;
+$border-radius-small:  2px;
+$border-radius-large:  5px;
+
+
+  //== Box Shadown
+  //
+
+
+$boxshadow-color-1: #CFD2DC;
+$boxshadow-color-2: #ECEFF7;
+$boxshadow-color-3: #F7F7F7;
+$boxshadow-color-4: #3887FF;
+
+$boxshadow-default: 0 0 0 1px rgba(168, 172, 183, 0.37), 0 1px 2px 0 $boxshadow-color-1, 0 1px 0 0 $boxshadow-color-2; //, 1px 1px 0 0 $boxshadow-color-3;
+
+
+//== Components
+//
+//##
+
+
+  //== Buttons
+  //

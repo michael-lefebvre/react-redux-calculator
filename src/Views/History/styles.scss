@@ -1,0 +1,113 @@
+@import "Scss/variables.scss";
+
+//== History List
+//
+//##
+
+$opacity-speed:   250ms;
+$opacity-delay:   100ms;
+$opacity-ease:    linear;
+
+$open-speed:      500ms;
+$open-ease:       $ease;
+
+.app__history {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.app__history__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  // padding: 20px 0;
+  pointer-events: none;
+  transform: translate3d(-50%, 0, 0);
+  transition: opacity $opacity-speed $opacity-ease, transform $open-speed $open-ease;
+  width: 85%;
+}
+
+.ui-history .app__history__content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition: opacity $opacity-speed $opacity-ease $opacity-delay, transform $open-speed $open-ease;
+}
+
+.app__history__empty {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  div {
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  span {
+    display: block;
+    font-family: $font-family-emoji;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+.app__history__list {
+  flex: 1;
+  overflow-y: auto;
+
+  .app__history__empty { margin-top: 100px }
+}
+
+.app__history__item {
+  border-radius: 2px;
+  color: #2A494E;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px 5px;
+  position: relative;
+
+  &:not(:first-child):before {
+    background: rgba( #97999A, .3);
+    top: 0;
+    content: '';
+    height: 1px;
+    left: 5px;
+    position: absolute;
+    right: 5px;
+  }
+
+  &.focused {
+    background: rgba( #1DB2AD, .2);
+    color: rgba( #2A494E, .7);
+
+    &:before { background: rgba( #1DB2AD, 0) }
+
+    + .app__history__item:before { background: rgba( #1DB2AD, 0) }
+  }
+}
+
+.app__history__item__operation,
+.app__history__item__result {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app__history__item__operation {
+  font-size: $font-size-extra-small;
+}
+
+.app__history__item__result {
+  padding-top: 8px;
+  font-size: $font-size-large;
+  font-weight: $font-weight-medium;
+}

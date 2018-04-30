@@ -1,0 +1,45 @@
+@import "Scss/variables.scss";
+
+//== App container
+//
+//##
+
+.app {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.app__container {
+  background: rgba( white, .7 );
+  border-radius: 6px;
+  // box-shadow: $boxshadow-default;
+  box-shadow: 0 0 0 1px rgba(168, 172, 183, 0.37), 0 0 1px 0 rgba(0, 0, 0, .6), 0 6px 10px 0 rgba(0, 0, 0, .2);
+  min-height: $screen-xs - 100px;
+  height: 80%;
+  max-height: $screen-sm;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: $screen-xs;
+  // transition: all 250ms linear;
+}
+
+@media (max-width: $screen-xs) {
+  .app__container {
+    border-radius: 0;
+    width: 100%;
+  }
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  .app__container {
+    border-radius: 0;
+    width: 100%;
+  }
+}

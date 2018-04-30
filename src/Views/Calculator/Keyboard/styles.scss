@@ -1,0 +1,12 @@
+@import "Scss/variables.scss";
+
+//== Calculator Keyboard
+//
+//##
+
+.app__calculator__keyboard {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}

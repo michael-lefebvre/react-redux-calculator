@@ -1,0 +1,53 @@
+@import "Scss/variables.scss";
+
+//== History Search
+//
+//##
+
+.app__history__search {
+  align-items: center;
+  background: url(./ico_magnifying.svg) no-repeat left center;
+  border-bottom: 1px solid rgba( #97999A, .5);
+  display: flex;
+  flex: 0 40px;
+  margin: 20px 20px 10px;
+  outline: none;
+  position: relative;
+  padding-left: 20px;
+  transition: all 500ms ease;
+  // width: 100%;
+
+  &--focus {  background-color: $color-storm-troopers }
+}
+
+.app__history__search__input {
+  height: 39px;
+  flex: 1;
+
+  input {
+    background: none;
+    border: none;
+    color: #2A494E;
+    font-size: $font-size-base;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.app__history__search__reset {
+  align-items: center;
+  background: url(./ico_reset.svg) no-repeat center;
+  display: flex;
+  flex: 0 0 20px;
+  height: 20px;
+  margin-left: 10px;
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+  width: 20px;
+
+  &--active {
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
